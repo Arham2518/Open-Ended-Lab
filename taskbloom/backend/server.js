@@ -1,8 +1,3 @@
-// =============================================
-// TaskBloom Backend — server.js
-// Express + MongoDB (MERN)
-// =============================================
-
 const express    = require('express');
 const mongoose   = require('mongoose');
 const cors       = require('cors');
@@ -33,10 +28,10 @@ app.get('*', (req, res) => {
 // ---- Connect to MongoDB ----
 mongoose.connect(MONGO_URI)
   .then(() => {
-    console.log('✅ MongoDB connected');
-    app.listen(PORT, () => console.log(`🌸 TaskBloom server running on http://localhost:${PORT}`));
+    console.log('MongoDB connected');
+    app.listen(PORT, () => console.log(`TaskBloom server running on http://localhost:${PORT}`));
   })
   .catch(err => {
-    console.error('❌ MongoDB connection failed:', err.message);
+    console.error('MongoDB connection failed:', err.message);
     process.exit(1);
   });

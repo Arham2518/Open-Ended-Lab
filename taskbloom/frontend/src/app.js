@@ -1,9 +1,3 @@
-/* =============================================
-   TaskBloom - app.js
-   Task List Management App
-   Vanilla JS + REST API (MERN backend)
-   ============================================= */
-
 const API_BASE = 'http://localhost:5000/api/tasks';
 
 // =========== STATE ===========
