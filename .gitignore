@@ -1,0 +1,27 @@
+# Dependencies - never push these
+node_modules/
+taskbloom/node_modules/
+taskbloom/server/node_modules/
+taskbloom/client/node_modules/
+
+# Environment variables - keep these private
+taskbloom/server/.env
+
+# React build output
+taskbloom/client/build/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+
+function person (first , last , age , eye){
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age; 
+    this.eyeColor = eye;
+}
