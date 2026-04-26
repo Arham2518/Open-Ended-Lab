@@ -217,7 +217,7 @@ function render() {
               <div class="task-title">${escapeHTML(t.title)}</div>
               <div class="task-meta">
                 <span class="badge ${pClass}">${pLabel}</span>
-                ${t.due ? `<span class="date-tag">📅 ${t.due}</span>` : ''}
+                ${t.due ? `<span class="date-tag"> ${t.due}</span>` : ''}
               </div>
             </div>
             <button class="del-btn" onclick="handleDelete('${id}')" aria-label="Delete task">✕</button>
@@ -234,9 +234,9 @@ function render() {
 
       <!-- HEADER -->
       <div class="header">
-        <div class="logo">Task<span class="accent">Bloom</span> 🌸</div>
+        <div class="logo">Task<span class="accent">Bloom</span> </div>
         <button class="mode-toggle" onclick="handleToggleMode()" aria-label="Toggle design mode">
-          ${state.arcadeMode ? '🧘 Zen Mode' : '🎮 Arcade Mode'}
+          ${state.arcadeMode ? ' Zen Mode' : ' Arcade Mode'}
         </button>
       </div>
 
@@ -251,7 +251,7 @@ function render() {
           <div class="stat-label">Done</div>
         </div>
         <div class="stat-card">
-          <span class="stat-val">${state.streak}🔥</span>
+          <span class="stat-val">${state.streak}</span>
           <div class="stat-label">Streak</div>
         </div>
       </div>
@@ -259,7 +259,7 @@ function render() {
       <!-- XP BAR -->
       <div class="xp-section">
         <div class="xp-top">
-          <span class="xp-level">⚡ Level ${state.level}</span>
+          <span class="xp-level"> Level ${state.level}</span>
           <span>${state.xp} / ${XP_PER_LEVEL} XP</span>
         </div>
         <div class="xp-track">
@@ -269,7 +269,7 @@ function render() {
 
       <!-- FLOWER -->
       <div class="flower-section" role="region" aria-label="Flower growth tracker">
-        <div class="flower-heading">🌸 Your Bloom — ${petalShown} petal${petalShown !== 1 ? 's' : ''} grown</div>
+        <div class="flower-heading"> Your Bloom — ${petalShown} petal${petalShown !== 1 ? 's' : ''} grown</div>
         <div class="flower-svg-container">${buildFlowerSVG(state.petalCount)}</div>
         <div class="flower-caption">Complete tasks to grow petals (max 12 visible)</div>
       </div>
@@ -289,9 +289,9 @@ function render() {
         </div>
         <div class="input-row2">
           <select class="task-input" id="task-priority-input" aria-label="Task priority">
-            <option value="high">🔴 High Priority</option>
-            <option value="med" selected>🟡 Medium Priority</option>
-            <option value="low">🟢 Low Priority</option>
+            <option value="high"> High Priority</option>
+            <option value="med" selected> Medium Priority</option>
+            <option value="low"> Low Priority</option>
           </select>
           <input
             class="task-input"
@@ -317,6 +317,14 @@ function render() {
       </div>
 
     </div>`;
+
+    document.body.style.backgroundImage = state.arcadeMode
+  ? "url('./mode2.jpg')"
+  : "url('./mode1.jpg')";
+
+document.body.style.backgroundSize = "cover";
+document.body.style.backgroundPosition = "center";
+document.body.style.backgroundRepeat = "no-repeat";
 
   saveLocal();
 }
