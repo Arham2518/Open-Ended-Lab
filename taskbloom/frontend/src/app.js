@@ -374,7 +374,21 @@ async function handleToggle(id) {
   task.done = true;
 
   state.petalCount++;
-  addXP(20);
+  const xpMap = { high: 30, med: 20, low: 10 };
+  addXP(xpMap[task.priority]);
+
+  //FEATURE 2: QUICK COMPLETION BONUS
+  const today = new Date().toISOString().split('T')[0];
+  if (task.due && task.due === today) {
+    addXP(10); // bonus for completing on same day
+  }
+
+  //FEATURE 6: RANDOM SURPRISE BONUS
+  if (Math.random() < 0.2) { // 20% chance
+    addXP(15);
+    alert("SURPRISE BONUSSS!");
+  }
+
   spawnConfetti();
 
   // LEVEL SYSTEM FIX
@@ -385,6 +399,10 @@ async function handleToggle(id) {
 
 } else {
   task.done = false;
+   
+   //FEATURE 3: UNDO PENALTY
+  state.petalCount = Math.max(0, state.petalCount - 1);
+  addXP(-10);
 
   // optional: decrease petals when undo
   state.petalCount = Math.max(0, state.petalCount - 1);
