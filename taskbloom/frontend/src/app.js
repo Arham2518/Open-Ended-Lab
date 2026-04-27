@@ -371,13 +371,24 @@ async function handleToggle(id) {
   const task = state.tasks.find(t => t._id === id);
   if (!task) return;
   if (!task.done) {
-    task.done = true;
-    state.petalCount++;
-    addXP(20);
-    spawnConfetti();
-  } else {
-    task.done = false;
+  task.done = true;
+
+  state.petalCount++;
+  addXP(20);
+  spawnConfetti();
+
+  // LEVEL SYSTEM FIX
+  if (state.petalCount >= 12) {
+    state.petalCount = 0;   // reset flower
+    addXP(50);          
   }
+
+} else {
+  task.done = false;
+
+  // optional: decrease petals when undo
+  state.petalCount = Math.max(0, state.petalCount - 1);
+}
   await apiToggleTask(id, task.done);
   render();
 }
